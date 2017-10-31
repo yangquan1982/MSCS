@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename local variable &apos;all_Words_List&apos; in &apos;lab1.Main.getWords(...)&apos; to &apos;allWordsList&apos;&#x0D;&#x0A;- Original project: &apos;lab1&apos;&#x0D;&#x0A;- Original element: &apos;lab1.Main.getWords(String).all_Words_List&apos;&#x0D;&#x0A;- Renamed element: &apos;all_Words_List&apos;&#x0D;&#x0A;- Update references to refactored element" description="Rename local variable &apos;all_Words_List&apos;" id="org.eclipse.jdt.ui.rename.local.variable" input="/src&lt;lab1{Main.java[Main~getWords~QString;@all_Words_List!259!317!277!290!QArrayList\&lt;QString;&gt;;!0!false" name="allWordsList" references="true" stamp="1509391456991" version="1.0"/>
+</session>

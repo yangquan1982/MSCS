@@ -1,0 +1,63 @@
+package lab1;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+public class Main {
+
+	private static ArrayList<String> getWords(String SInput){
+	    ArrayList<String> allWordsList = new ArrayList<String>();
+	    String[] strArray = SInput.split("\\s|-");
+	    String SWord = "";
+	    for(int i=0; i<strArray.length; i++){
+	    	for(int j=0;j<strArray[i].length();j++){
+		        Character charAt = strArray[i].charAt(j);
+		        if(!Character.isAlphabetic(charAt)){
+		        	SWord = "";
+		        	break;
+		        }
+	            SWord += charAt;
+	    	}
+	    	if(SWord!=""){
+	        	String keyWord = new String(SWord);
+	        	allWordsList.add(keyWord.toLowerCase());
+	        	SWord = "";
+	    	}
+	    }
+	    return allWordsList;
+	}
+	
+	public static void main(String[] args) {
+		String filePath = "testDataForW1D1.txt";
+		String input = "Given a text-file input123,";
+		BufferedReader br = null;
+		FileReader fr = null;
+		try {
+			fr = new FileReader(filePath);
+			br = new BufferedReader(fr);
+			String sCurrentLine;
+			while((sCurrentLine = br.readLine()) != null){
+				ArrayList<String> allWordsList = getWords(sCurrentLine);
+			}
+			HashMap output = new HashMap<String, Integer>();
+			
+			List<String> strList = allWordsList.stream().sorted().collect(Collectors.toList());
+			for(String word:strList){
+				output.put(word, "1");
+			}
+		    System.out.println(output.toString());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}

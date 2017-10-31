@@ -1,0 +1,17 @@
+package lab1;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Main {
+
+	public static void main(String[] args) {
+		String input = "Input text, with words, punctuation, etc. Well, it's rather short.";
+		Pattern p = Pattern.compile("[\\w']+");
+		Matcher m = p.matcher(input);
+
+		while ( m.find() ) {
+		    System.out.println(input.substring(m.start(), m.end()));
+		}
+	}
+}

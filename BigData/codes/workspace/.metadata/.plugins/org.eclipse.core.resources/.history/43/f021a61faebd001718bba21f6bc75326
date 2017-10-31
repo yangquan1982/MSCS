@@ -1,0 +1,44 @@
+package lab1;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Main {
+
+	private static ArrayList<String> getWords(String SInput){
+
+	    ArrayList<String> allWordsList = new ArrayList<String>();
+	    String[] strArray = SInput.split("\\s|-");
+	    String SWord = "";
+	    for(int i=0; i<strArray.length; i++){
+	    	for(int j=0;j<strArray[i].length();j++){
+		        Character charAt = strArray[i].charAt(j);
+	            SWord = SWord + charAt;
+//		        Character charNext = strArray[i].charAt(j+1);
+		        if(!Character.isAlphabetic(charAt)){
+		        	SWord = "";
+		        	break;
+		        }
+		        else{
+		            if(!SWord.isEmpty()){
+		            	String keyWord = new String(SWord);
+		            	allWordsList.add(keyWord.toLowerCase());
+		            }
+		            SWord = "";
+		        }
+	    	}
+	    }
+	    return allWordsList;
+
+	}
+	
+	public static void main(String[] args) {
+		String input = "Given a text-file input123,";
+		Pattern p = Pattern.compile("([A-Za-z])+('([A-Za-z])*)?");
+		Matcher m = p.matcher(input);
+		HashMap output = new HashMap<String, Integer>();
+	    System.out.println(getWords(input).toString());
+	}
+}

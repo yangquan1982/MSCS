@@ -1,0 +1,38 @@
+package lab1;
+
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Main {
+
+	private ArrayList<String> get_Words(String SInput){
+
+	    StringBuilder stringBuffer = new StringBuilder(SInput);
+	    ArrayList<String> all_Words_List = new ArrayList<String>();
+
+	    String SWord = "";
+	    for(int i=0; i<stringBuffer.length(); i++){
+	        Character charAt = stringBuffer.charAt(i);
+	        if(Character.isAlphabetic(charAt) || Character.isDigit(charAt)){
+	            SWord = SWord + charAt;
+	        }
+	        else{
+	            if(!SWord.isEmpty()) all_Words_List.add(new String(SWord));
+	            SWord = "";
+	        }
+	    }
+	    return all_Words_List;
+
+	}
+	
+	public static void main(String[] args) {
+		String input = "Given a text-file input123,";
+		Pattern p = Pattern.compile("([A-Za-z])+('([A-Za-z])*)?");
+		Matcher m = p.matcher(input);
+
+		while ( m.find() ) {
+		    System.out.println(input.substring(m.start(), m.end()));
+		}
+	}
+}

@@ -1,0 +1,6 @@
+package lab1;
+
+public class Pair {
+	private String key;
+	private int value;
+}
