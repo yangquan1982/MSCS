@@ -10,8 +10,11 @@ public class Main {
 		Reducer reducer = new Reducer();
 		String filePath = "src/testDataForW1D1.txt";
 		List<GroupByPair> reducerInput = shuffle.shuffle(mapper.map(filePath));
-		//mapper.map(filePath).stream().forEach(System.out::print);
+		System.out.println("\nMapper Output\n");
+		mapper.map(filePath).stream().forEach(System.out::print);
+		System.out.println("\nReducer Input\n");
+		reducerInput.stream().forEach(System.out::print);
+		System.out.println("\nReducer Output\n");
 		reducer.reduce(reducerInput).stream().forEach(System.out::print);
 	}
-
 }

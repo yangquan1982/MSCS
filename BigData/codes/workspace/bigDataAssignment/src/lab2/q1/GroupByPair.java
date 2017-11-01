@@ -5,10 +5,10 @@ import java.util.List;
 
 public class GroupByPair {
 	private String key;
-	private List<Integer> value;
-	public GroupByPair(String key, List<Integer> value) {
+	private List<Integer> values;
+	public GroupByPair(String key) {
 		this.key = key;
-		this.value = value;
+		this.values = new ArrayList<>();
 	}
 	public String getKey() {
 		return key;
@@ -16,21 +16,18 @@ public class GroupByPair {
 	public void setKey(String key) {
 		this.key = key;
 	}
-	public List<Integer> getValue() {
-		return value;
+	public List<Integer> getValues() {
+		return values;
 	}
-	public void setValue(List<Integer> value) {
-		this.value = value;
+	public void setValues(List<Integer> values) {
+		this.values = values;
 	}
-	public void addValueItem(Integer item){
-		if(value==null){
-			value = new ArrayList<>();
-		}
-		value.add(item);
+	public void addValue(Integer value){
+		this.values.add(value);
 	}
 	@Override
 	public String toString() {
-		return "<" + key + ", " + value.toString() + ">\n";
+		return "<" + key + ", " + values.toString() + ">\n";
 	}
 	
 }

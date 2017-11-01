@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import lab1.Pair;
-
 public class Mapper {
 	@SuppressWarnings("unchecked")
 	private <T> ArrayList<T> getWords(T SInput){
