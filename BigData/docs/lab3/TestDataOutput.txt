@@ -1,0 +1,124 @@
+Number of Input-Splits: 3
+Number of Reducers: 4
+Mapper 0 Input
+"cat bat" mat-pat mum.edu sat.
+fat 'rat eat cat' mum_cs mat
+Mapper 1 Input
+bat-hat mat pat "oat
+hat rat mum_cs eat oat-pat
+Mapper 2 Input
+zat lat-cat pat jat.
+hat rat. kat sat wat
+Mapper 0 Output
+< cat , 1 >
+< bat , 1 >
+< mat , 1 >
+< pat , 1 >
+< sat , 1 >
+< fat , 1 >
+< rat , 1 >
+< eat , 1 >
+< cat , 1 >
+< mat , 1 >
+Mapper 1 Output
+< bat , 1 >
+< hat , 1 >
+< mat , 1 >
+< pat , 1 >
+< oat , 1 >
+< hat , 1 >
+< rat , 1 >
+< eat , 1 >
+< oat , 1 >
+< pat , 1 >
+Mapper 2 Output
+< zat , 1 >
+< lat , 1 >
+< cat , 1 >
+< pat , 1 >
+< jat , 1 >
+< hat , 1 >
+< rat , 1 >
+< kat , 1 >
+< sat , 1 >
+< wat , 1 >
+Pairs send from Mapper 0 Reducer 0
+< eat , 1 >
+< mat , 1 >
+< mat , 1 >
+Pairs send from Mapper 0 Reducer 1
+< bat , 1 >
+< fat , 1 >
+< rat , 1 >
+Pairs send from Mapper 0 Reducer 2
+< cat , 1 >
+< cat , 1 >
+< sat , 1 >
+Pairs send from Mapper 0 Reducer 3
+< pat , 1 >
+Pairs send from Mapper 1 Reducer 0
+< eat , 1 >
+< mat , 1 >
+Pairs send from Mapper 1 Reducer 1
+< bat , 1 >
+< rat , 1 >
+Pairs send from Mapper 1 Reducer 2
+< oat , 1 >
+< oat , 1 >
+Pairs send from Mapper 1 Reducer 3
+< hat , 1 >
+< hat , 1 >
+< pat , 1 >
+< pat , 1 >
+Pairs send from Mapper 2 Reducer 0
+Pairs send from Mapper 2 Reducer 1
+< jat , 1 >
+< rat , 1 >
+< zat , 1 >
+Pairs send from Mapper 2 Reducer 2
+< cat , 1 >
+< kat , 1 >
+< sat , 1 >
+< wat , 1 >
+Pairs send from Mapper 2 Reducer 3
+< hat , 1 >
+< lat , 1 >
+< pat , 1 >
+Reducer 0 input
+< eat , [1, 1] >
+< mat , [1, 1, 1] >
+Reducer 1 input
+< bat , [1, 1] >
+< fat , [1] >
+< jat , [1] >
+< rat , [1, 1, 1] >
+< zat , [1] >
+Reducer 2 input
+< cat , [1, 1, 1] >
+< kat , [1] >
+< oat , [1, 1] >
+< sat , [1, 1] >
+< wat , [1] >
+Reducer 3 input
+< hat , [1, 1, 1] >
+< lat , [1] >
+< pat , [1, 1, 1, 1] >
+Reducer 0 output
+< eat , 2 >
+< mat , 3 >
+Reducer 1 output
+< bat , 2 >
+< fat , 1 >
+< jat , 1 >
+< rat , 3 >
+< zat , 1 >
+Reducer 2 output
+< cat , 3 >
+< kat , 1 >
+< oat , 2 >
+< sat , 2 >
+< wat , 1 >
+Reducer 3 output
+< hat , 3 >
+< lat , 1 >
+< pat , 4 >
