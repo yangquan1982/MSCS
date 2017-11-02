@@ -10,6 +10,9 @@ public class Mapper {
 
 	@SuppressWarnings("unchecked")
 	private <T> ArrayList<T> getWords(T SInput){
+		if (SInput==null) {
+			return null;
+		}
 	    ArrayList<T> allWordsList = new ArrayList<T>();
 	    String[] strArray = ((String) SInput).split("\\s|-");
 	    String SWord = "";
@@ -38,8 +41,11 @@ public class Mapper {
 	    }
 	    return allWordsList;
 	}
-	@SuppressWarnings({ "unchecked", "resource" })
+	@SuppressWarnings({ "unchecked" })
 	public <T> List<T> map(Path filePath){
+		if (filePath==null) {
+			return null;
+		}
 		BufferedReader br = null;
 		List<Pair> pairList = null;
 		try (FileReader fr = new FileReader(filePath.toString())){

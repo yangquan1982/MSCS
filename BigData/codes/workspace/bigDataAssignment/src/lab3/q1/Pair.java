@@ -21,6 +21,6 @@ public class Pair {
 	}
 	@Override
 	public String toString() {
-		return "<" + key + ", " + value + ">\n";
+		return "< " + key + " , " + value + " >\n";
 	}
 }

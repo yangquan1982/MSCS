@@ -10,6 +10,10 @@ public class GroupByPair {
 		this.key = key;
 		this.values = new ArrayList<>();
 	}
+	public GroupByPair(String key, List<Integer> values) {
+		this.key = key;
+		this.values = values;
+	}
 	public String getKey() {
 		return key;
 	}
@@ -27,7 +31,7 @@ public class GroupByPair {
 	}
 	@Override
 	public String toString() {
-		return "<" + key + ", " + values.toString() + ">\n";
+		return "< " + key + " , " + values.toString() + " >\n";
 	}
 	
 }

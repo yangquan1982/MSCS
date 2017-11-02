@@ -6,9 +6,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -17,6 +16,7 @@ public class Main {
 	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		try (Stream<Path> paths = Files.walk(Paths.get("src"))) {
+			/*Read files and output contents by file*/
 			List<Path> inputFiles = 
 		    paths
 		        .filter(path -> {
@@ -36,58 +36,15 @@ public class Main {
 					System.out.println(sCurrentLine);
 				}
 			}
-			Mapper mapper0 = new Mapper();
-			for(int i=0;i<inputFiles.size();i++){
-				System.out.println("Mapper "+i+" Output");
-				mapper0.map(inputFiles.get(i)).stream().forEach(System.out::print);
-			}
+			
+			/*Output map results by Mapper*/
 			WordCount wordCount = new WordCount(inputFiles.size(),reducerNum);
-			Mapper mapper = null;
-			Reducer reducer = null;
-			List<Pair> mapperOutput = null;
-			for(int i=0;i<inputFiles.size();i++){
-				mapper = new Mapper();
-				wordCount.addMapper(mapper);
-				mapperOutput = mapper.map(inputFiles.get(i));
-				Collections.sort(mapperOutput, 
-						(Pair p1, Pair p2) -> p1.getKey()
-						.compareTo(p2.getKey()));
-				for(int j=0;j<reducerNum;j++){
-					reducer = new Reducer();
-					wordCount.addReducer(reducer);
-					System.out.println("Pairs send from Mapper "+i+" Reducer "+j);
-					for(Pair p:mapperOutput){
-						if(wordCount.getPartition(p.getKey())==j){
-							System.out.print(p);
-						}
-					}
-				}
-			}
-			List<List<Pair>> mapperOutputs = new ArrayList<>();
-			for(int i=0;i<inputFiles.size();i++){
-				mapperOutputs.add(wordCount.getMappers()[i].map(inputFiles.get(i)));
-			}
-			List<Pair> shuffleInputs = null;
-			List<List<GroupByPair>> reducerInputs = new ArrayList<>();
-			for(int i=0;i<reducerNum;i++){
-				System.out.println("Reducer "+i+" input");
-				shuffleInputs = new ArrayList<>();
-				for(int j=0;j<inputFiles.size();j++){
-					for(Pair p:mapperOutputs.get(j)){
-						if(wordCount.getPartition(p.getKey())==i){
-							shuffleInputs.add(p);
-						}
-					}
-				}
-				reducerInputs.add(Shuffle.shuffle(shuffleInputs));
-				reducerInputs.get(i).stream().forEach(System.out::print);
-			}
-			for(int i=0;i<reducerNum;i++){
-				System.out.println("Reducer "+i+" output");
-				wordCount.getReducers()[i]
-						.reduce(reducerInputs.get(i))
-						.stream().forEach(System.out::print);
-			}
+			Map<Integer,List<Pair>> mapperOutputs = wordCount.map(inputFiles);
+			wordCount.setMapperOutputs(mapperOutputs);
+			/*Output shuffle results and reducer inputs by reducer*/
+			wordCount.shuffle();
+			/*Output reduce results by reducer*/
+			wordCount.reduce();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
