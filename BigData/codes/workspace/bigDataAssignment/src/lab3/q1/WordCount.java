@@ -32,7 +32,7 @@ public class WordCount {
 		reducerOutputs = new HashMap<>();
 	}
 	private int getPartition(String key){
-		return (int) (key.hashCode() % this.r);
+		return (int) (Math.abs(key.hashCode()) % this.r);
 	}
 	public Map<Integer,List<Pair>> map(List<Path> filePathList){
 		if (filePathList==null) {

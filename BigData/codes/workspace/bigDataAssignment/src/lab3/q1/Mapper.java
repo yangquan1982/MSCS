@@ -41,7 +41,7 @@ public class Mapper {
 	    }
 	    return allWordsList;
 	}
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings({ "unchecked", "resource" })
 	public <T> List<T> map(Path filePath){
 		if (filePath==null) {
 			return null;
@@ -61,7 +61,6 @@ public class Mapper {
 			for(String word:allWordsList){
 				pairList.add(new Pair(word,1));
 			}
-			//Collections.sort(pairList, (Pair p1, Pair p2) -> p1.getKey().compareTo(p2.getKey()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
