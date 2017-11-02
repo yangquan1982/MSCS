@@ -1,0 +1,114 @@
+Number of Input-Splits: 3
+Number of Reducers: 4
+Mapper 0 Input
+"cat bat" mat-pat mum.edu sat.
+fat 'rat eat cat' mum_cs mat
+Mapper 1 Input
+bat-hat mat pat "oat
+hat rat mum_cs eat oat-pat
+Mapper 2 Input
+zat lat-cat pat jat.
+hat rat. kat sat wat
+Mapper 0 Output
+< mat , 2 >
+< pat , 1 >
+< bat , 1 >
+< rat , 1 >
+< cat , 2 >
+< sat , 1 >
+< fat , 1 >
+< eat , 1 >
+Mapper 1 Output
+< mat , 1 >
+< pat , 2 >
+< oat , 2 >
+< bat , 1 >
+< rat , 1 >
+< eat , 1 >
+< hat , 2 >
+Mapper 2 Output
+< pat , 1 >
+< rat , 1 >
+< cat , 1 >
+< sat , 1 >
+< hat , 1 >
+< wat , 1 >
+< zat , 1 >
+< jat , 1 >
+< lat , 1 >
+< kat , 1 >
+Pairs send from Mapper 0 Reducer 0
+< eat , 1 >
+< mat , 2 >
+Pairs send from Mapper 0 Reducer 1
+< bat , 1 >
+< fat , 1 >
+< rat , 1 >
+Pairs send from Mapper 0 Reducer 2
+< cat , 2 >
+< sat , 1 >
+Pairs send from Mapper 0 Reducer 3
+< pat , 1 >
+Pairs send from Mapper 1 Reducer 0
+< eat , 1 >
+< mat , 1 >
+Pairs send from Mapper 1 Reducer 1
+< bat , 1 >
+< rat , 1 >
+Pairs send from Mapper 1 Reducer 2
+< oat , 2 >
+Pairs send from Mapper 1 Reducer 3
+< hat , 2 >
+< pat , 2 >
+Pairs send from Mapper 2 Reducer 0
+Pairs send from Mapper 2 Reducer 1
+< jat , 1 >
+< rat , 1 >
+< zat , 1 >
+Pairs send from Mapper 2 Reducer 2
+< cat , 1 >
+< kat , 1 >
+< sat , 1 >
+< wat , 1 >
+Pairs send from Mapper 2 Reducer 3
+< hat , 1 >
+< lat , 1 >
+< pat , 1 >
+Reducer 0 input
+< eat , [1, 1] >
+< mat , [2, 1] >
+Reducer 1 input
+< bat , [1, 1] >
+< fat , [1] >
+< jat , [1] >
+< rat , [1, 1, 1] >
+< zat , [1] >
+Reducer 2 input
+< cat , [2, 1] >
+< kat , [1] >
+< oat , [2] >
+< sat , [1, 1] >
+< wat , [1] >
+Reducer 3 input
+< hat , [2, 1] >
+< lat , [1] >
+< pat , [1, 2, 1] >
+Reducer 0 output
+< eat , 2 >
+< mat , 3 >
+Reducer 1 output
+< bat , 2 >
+< fat , 1 >
+< jat , 1 >
+< rat , 3 >
+< zat , 1 >
+Reducer 2 output
+< cat , 3 >
+< kat , 1 >
+< oat , 2 >
+< sat , 2 >
+< wat , 1 >
+Reducer 3 output
+< hat , 3 >
+< lat , 1 >
+< pat , 4 >

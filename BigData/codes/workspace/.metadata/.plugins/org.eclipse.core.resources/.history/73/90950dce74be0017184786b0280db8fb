@@ -1,0 +1,27 @@
+package lab2;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Reducer {
+	public List<Pair> reduce(List<GroupByPair> input){
+		List<Pair> out = new ArrayList<>();
+		for(GroupByPair gbp:input){
+			int sum = 0;
+			for(Integer v:gbp.getValue()){
+				sum += v;
+			}
+			out.add(new Pair(gbp.getKey(), sum));
+		}
+		return out;
+	}
+	public static void main(String[] args){
+		Mapper mapper = new Mapper();
+		Shuffle shuffle = new Shuffle();
+		Reducer reducer = new Reducer();
+		String filePath = "src/testDataForW1D1.txt";
+		List<GroupByPair> reducerInput = shuffle.shuffle(mapper.map(filePath));
+		reducer.reduce();
+		reducerInput.stream().forEach(System.out::print);
+	}
+}

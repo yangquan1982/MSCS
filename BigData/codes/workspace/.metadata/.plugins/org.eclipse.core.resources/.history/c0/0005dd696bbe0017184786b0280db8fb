@@ -1,0 +1,35 @@
+package lab2;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Mapper {
+	public <T> List<T> map(T SInput){
+		List<T> allWordsList = new ArrayList<T>();
+	    String[] strArray = ((String) SInput).split("\\s|-");
+	    String SWord = "";
+	    for(int i=0; i<strArray.length; i++){
+	    	for(int j=0;j<strArray[i].length();j++){
+		        Character charAt = strArray[i].charAt(j);
+		        if(Character.isDigit(charAt)
+		        		|| (charAt.equals('.') && j<strArray[i].length()-1)
+		        		|| charAt.equals('_')){
+		        	SWord = "";
+		        	break;
+		        }
+		        if(charAt.equals('"') 
+		        		|| charAt.equals(',')
+		        		|| charAt.equals('.')){
+		        	continue;
+		        }
+	            SWord += charAt;
+	    	}
+	    	if(SWord!=""){
+	        	String keyWord = new String(SWord);
+	        	allWordsList.add((T) keyWord.toLowerCase());
+	        	SWord = "";
+	    	}
+	    }
+	    return allWordsList;
+	}
+}

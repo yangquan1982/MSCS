@@ -1,0 +1,14 @@
+package lab2;
+
+import java.util.List;
+
+import lab1.Pair;
+
+public class Shuffle {
+	public List<GroupByPair> shuffle(List<Pair> input){
+		for(Pair p:input){
+			
+		}
+		return null;
+	}
+}
