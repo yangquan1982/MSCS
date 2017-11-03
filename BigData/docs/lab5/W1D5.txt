@@ -1,0 +1,36 @@
+Q1
+class Mapper
+	method Initialize
+		H = new AssociativeArray;
+	method Map(docid a;doc d)
+		for all term w in doc d do
+			for all term u in Neighbors(w) do
+				H{(pair(w;u))} = H{(pair(w;u))} + 1
+	method Close
+		for all pair p in H do
+			Emit(pair(w;u);H{(pair(w;u))})
+			
+class Reducer
+	method Reduce(pair p;counts[c1;c2;...])
+		s = 0;
+		for all count c in counts [c1;c2;...] do
+			s = s + c
+		Emit(pair p;count s)
+Q2
+class Mapper
+	method Initialize
+		H = new AssociativeArray;
+	method Map(docid a;doc d)
+		for all term w in doc d do
+			Hw = new AssociativeArray;
+			for all term u in Neighbors(w) do
+				Hw{u} += 1
+			H{w} = sum(H{w},Hw)		//merge HashMaps
+	merge Close
+		for w in H do
+			Emit(w;stripe H{w})
+			
+Q3
+Illustrate algorithm 3.8.
+
+				
