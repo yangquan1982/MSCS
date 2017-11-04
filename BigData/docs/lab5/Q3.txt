@@ -2,6 +2,11 @@ Input Split 1 : [ {cat mat rat, cat}, {cat  bat cat pat},{cat bat rat bat}]    (
 
 Input Split 2 : [{cat rat bat rat}, {bat mat pat bat}, {pat cat bat mat}]    (Note: 3 records)
 
+b.Illustrate algorithm 3.8 (with in-mapper combining. That is, apply your algorithm Q1).
+c.Illustrate algorithm 3.9 
+d.Illustrate algorithm 3.9 (with in-mapper combining. That is, apply your algorithm Q2).
+
+a.Illustrate algorithm 3.8.
 Mapper 0 Output
 ((cat,mat),1)
 ((cat,rat),1)
