@@ -1,0 +1,48 @@
+Input Split 1 (Doc ID 101) [ cat pat mat sat cat eat ]
+
+Input Split 2 (Doc ID 201)  [ pat mat sat pat mat eat]
+
+Input Split 3 (Doc ID 301) [ sat mat cat pat fat mat]
+
+Mapper 1 Output
+((cat,101),2)
+((pat,101),1)
+((mat,101),1)
+((sat,101),1)
+((eat,101),1)
+Mapper 2 Output
+((pat,201),2)
+((mat,201),2)
+((sat,201),1)
+((eat,201),1)
+Mapper 3 Output
+((sat,301),1)
+((mat,301),2)
+((cat,301),1)
+((pat,301),1)
+((fat,301),1)
+Reducer 1 Input(cat mat sat)
+((cat,101),2)
+((cat,301),1)
+((mat,101),1)
+((mat,201),2)
+((mat,301),2)
+((sat,101),1)
+((sat,201),1)
+((sat,301),1)
+Reducer 2 Input(pat fat eat)
+((eat,101),1)
+((eat,201),1)
+((fat,301),1)
+((pat,101),1)
+((pat,201),2)
+((pat,301),1)
+Reducer 1 Output
+(cat,[(101,2),(301,1)])
+(mat,[(101,1),(201,2),(301,2)])
+(sat,[(101,1),(201,1),(301,1)])
+Reducer 2 Output
+(eat,[(101,1),(201,1)])
+(fat,[(301,1)])
+(pat,[(101,1),(201,2),(301,1)])
+
