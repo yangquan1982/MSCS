@@ -1,0 +1,62 @@
+public class VarInt {
+	
+	public static int byteRequiredForInt(int n){
+		int size = 1;
+		if ((n >>> 28) != 0) size = 5;
+		else if ((n >>> 21) != 0) size = 4;
+		else if ((n >>> 14) != 0) size = 3;
+		else if ((n >>> 7) != 0) size = 2;
+		
+		return size;
+	}
+	
+	public static byte[] encodeInt(int n){
+		int size = byteRequiredForInt(n);
+	
+		byte[] code = new byte[size];
+		
+		for (int i = 0; i < size; i++){
+			code[i] = (byte) (n & 0x0000007F);
+			n = n >>> 7;
+		}
+		byte mask = (byte) 0x80;
+		code[0] = (byte) (code[0] | mask);
+		
+		return code;
+	}
+	
+	public static int decodeInt(byte[] code){
+		byte mask = (byte) 0x7F;
+		code[0] = (byte) (code[0] & mask);
+	
+		int n = 0;		
+		for (int i = code.length -1; i >= 0;  i--){
+			n = n << 7;
+			n =  ( n | code[i]);
+		}
+		return n;
+	}
+	
+	public static byte[] encode(int[] a){
+	  // you can try this
+	}
+	
+	public static int[] decode(byte[] code){
+	  // you can try this
+	}
+	 
+	public static String toStringByte(byte b){
+		String str ="";
+		for (int i = 0; i < 8; i++){
+			str += (b < 0) ? "1" : "0";
+			b = (byte) (b << 1);
+		}
+		return str;
+	}
+	
+	public static void main(String[] args) {
+		int[] plist = {100, 8, 150, 7, 300, 24, 500, 36};
+		// you can add whatever you want
+        
+	}
+}
