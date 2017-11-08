@@ -1,0 +1,1 @@
+For MPP, we configure the Logger using the jar file logsetup.jar
