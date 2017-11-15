@@ -1,9 +1,0 @@
-package lab3.q1;
-
-public class WordCount {
-	private int m;
-	private int r;
-	private Mapper[] mapper;
-	private Reducer[] reducer;
-	
-}
